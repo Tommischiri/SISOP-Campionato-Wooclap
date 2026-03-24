@@ -13,3 +13,15 @@ options:
   -sp, --sumpolicy {bestN}
                         Regola di somma punti per classifica finale
 ```
+
+## Setup per librerie:
+### Windows:
+```
+py -m pip install -r requirements.txt
+```
+
+### Linux/MacOS:
+```
+python3 -m pip install -r requirements.txt
+```
+
