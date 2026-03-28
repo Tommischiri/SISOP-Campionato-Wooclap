@@ -59,7 +59,8 @@ for file in results_list:
         if r[0] not in total_scores:
             total_scores[r[0]] = []
         total_scores[r[0]].append(r[1])
-        total_scores[r[0]].sort(reverse=True)
+for i in total_scores.values():
+    i.sort(reverse=True)
 
 
 final_scores = []
