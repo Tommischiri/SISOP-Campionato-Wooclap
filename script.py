@@ -35,7 +35,8 @@ sp = globals()[args["sumpolicy"]]
 
 results_list = []
 for i in absoluteFilePaths(args["directory"]):
-    if not i.startswith("~$") and i.split(".")[-1] in excel_extension:
+    fname = os.path.basename(i)
+    if (not fname.startswith("~$")) and fname.split(".")[-1] in excel_extension:
         print(f'Excel trovato: {i}')
         results_list.append(i)
 if results_list == []:
@@ -51,6 +52,8 @@ for file in results_list:
     excel = excel[excel.sheetnames[0]]
     colonna_punteggio = excel.max_column
     for riga in excel.iter_rows(2,excel.max_row-1):
+        if not str(riga[4].value).strip():
+            continue
         results.append([riga[4].value,riga[colonna_punteggio-1].value])
         wooclap_scores[riga[4].value] = wooclap_scores.get(riga[4].value,0)+riga[colonna_punteggio-1].value
     results.sort(key=lambda k: k[1], reverse=True)
